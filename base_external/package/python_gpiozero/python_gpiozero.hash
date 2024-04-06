@@ -1,0 +1,3 @@
+#md5, sha256 from https://pypi.org/project/gpiozero/#files
+md5    ed36bee070df2a8788c2038d585146db  gpiozero-2.0.1.tar.gz
+sha256    d4ea1952689ec7e331f9d4ebc9adb15f1d01c2c9dcfabb72e752c9869ab7e97e  gpiozero-2.0.1.tar.gz

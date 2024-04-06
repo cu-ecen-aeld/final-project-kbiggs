@@ -1,0 +1,4 @@
+config BR2_PACKAGE_PYTHON_RPI.GPIO
+	bool "python-RPI.GPIO"
+	help
+	  This package includes RPi.GPIO python package.
