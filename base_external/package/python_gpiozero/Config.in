@@ -2,5 +2,5 @@
 config BR2_PACKAGE_PYTHON_GPIOZERO
 	bool "python-gpiozero"
 	help
-	  Includes the writer python gpiozero library
-	  Used to understand buildroot external trees and package builds.
+	  This package includes gpiozero python package.
+	  Helps to understand buildroot external trees and package builds.
