@@ -1,11 +1,15 @@
 
-import gpiozero
+from gpiozero import MCP3008
 import RPi.GPIO as GPIO
 import time
 
+# Initialize LED pins
 LED_1 = 27
 LED_2 = 22
 LED_3 = 4
+
+# Pressure sensor
+pressure_sens = MCP3008(channel=0, clock_pin=11, mosi_pin=10, miso_pin=9, select_pin=8)
 
 def init_leds():
     # Number IO pins based on Broadcom SOC pin numbers
@@ -25,10 +29,15 @@ def trigger_led(led):
     time.sleep(2)
     GPIO.output(led, GPIO.LOW)
 
+def read_pressure_sensor():
+    lvl = pressure_sens.value
+    print(lvl)
+
 def main():
     init_leds()
     print("hello from the rasp pi!")
     while True:
+        read_pressure_sensor()
         print("LED 1")
         trigger_led(LED_1)
         print("LED 2")
