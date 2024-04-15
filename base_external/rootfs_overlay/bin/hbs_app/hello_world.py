@@ -10,6 +10,7 @@ LED_3 = 4
 
 # Pressure sensor
 pressure_sens = MCP3008(channel=0, clock_pin=11, mosi_pin=10, miso_pin=9, select_pin=8)
+pressure_sens_1 = MCP3008(channel=1, clock_pin=11, mosi_pin=10, miso_pin=9, select_pin=8)
 
 def init_leds():
     # Number IO pins based on Broadcom SOC pin numbers
@@ -31,7 +32,8 @@ def trigger_led(led):
 
 def read_pressure_sensor():
     lvl = pressure_sens.value
-    print(lvl)
+    lvl_1 = pressure_sens_1.value
+    print(lvl, lvl_1)
 
 def main():
     init_leds()

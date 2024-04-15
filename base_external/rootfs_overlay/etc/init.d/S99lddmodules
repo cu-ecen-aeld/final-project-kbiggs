@@ -1,0 +1,17 @@
+#! /bin/sh
+
+case "$1" in
+    start)
+        echo "Initializing modules for SPI"
+        modprobe spi-bcm2835  
+        modprobe spidev
+        ;;
+    stop)
+        echo "Removing SPI modules"
+        rmmod spidev
+        rmmod spi-bcm2835
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+    exit 1
+esac
