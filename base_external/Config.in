@@ -1,3 +1,4 @@
 source "$BR2_EXTERNAL_project_base_PATH/package/aesd-assignments/Config.in"
 source "$BR2_EXTERNAL_project_base_PATH/package/python_gpiozero/Config.in"
 source "$BR2_EXTERNAL_project_base_PATH/package/python_rpi.gpio/Config.in"
+source "$BR2_EXTERNAL_project_base_PATH/package/hbs-app/Config.in"

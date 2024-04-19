@@ -1,0 +1,6 @@
+
+config BR2_PACKAGE_HBS_APP
+	bool "hbs-app"
+	help
+	  Includes the master python scripts for pet monitor in the kernel image.
+	  Used to understand buildroot external trees and package builds.
