@@ -1,8 +1,11 @@
 #!/bin/sh
 # Shared definitions for buildroot scripts
 
-if [ -e ${RPI4} ]
+RPI4=$1
+
+if [ -n "${RPI4}" ]
 then
+	echo rpi4
 	# The defconfig from the buildroot directory we use for qemu builds
 	RPI4_DEFCONFIG=configs/raspberrypi4_64_defconfig
 	# The place we store customizations to the qemu configuration
@@ -13,7 +16,7 @@ then
 	AESD_MODIFIED_DEFCONFIG_REL_BUILDROOT=../${AESD_MODIFIED_DEFCONFIG}
 
 else
-
+	echo rpi3
 	# The defconfig from the buildroot directory we use for qemu builds
 	QEMU_DEFCONFIG=configs/qemu_aarch64_virt_defconfig
 	# The default hardware platform, when building for hardware
@@ -24,7 +27,6 @@ else
 
 	# The place we store customizations to the rpi configuration
 	MODIFIED_RPI_DEFCONFIG=base_external/configs/aesd_rpi_defconfig
-
 
 	# The defconfig from the buildroot directory we use for the project
 	AESD_DEFAULT_DEFCONFIG=${RPI_DEFCONFIG}
