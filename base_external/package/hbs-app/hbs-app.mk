@@ -5,7 +5,7 @@
 #
 ##############################################################
 
-HBS_APP_VERSION = 5408863f155d860c0a8285c5b6cebd128f354c68
+HBS_APP_VERSION = 42328b1dda7cd6363999f37394f5fc41fab51724
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
