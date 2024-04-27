@@ -12,6 +12,60 @@
    	  padding: 8px;
    	}
    	</style>
+   	
+   	<script src="http://code.jquery.com/jquery.min.js"></script>
+   	<script>
+   	//log function
+   	log = function(data) {
+   		$("div#terminal").append("</br>" + data);
+   		console.log(data);
+   	};
+   	
+   	$(document).ready(function () {
+   		var wsT;
+   		
+   		$("#open").click(function(evt) {
+   		  evt.preventDefault();
+   		  
+   		  //create websocket instance
+   		  var host = document.getElementById("hostIP").value
+   		  var wsName = "ws://" + host + ":8888/ts"
+   		  wsT = new WebSocket(wsName);
+   		  
+   		  //handle incoming messages
+   		  wsT.onmessage = function(evt) {
+   		  	if(evt.data != "Connected to tornado test server") {
+   		  		//log the received value
+   		  		log(evt.data);
+   		  		document.getElementById("rxval").innerHTML = evt.data;
+   		  	}
+   		  };
+   		  
+   		  //close socket callback
+   		  wsT.onclose = function(evt) {
+   		    log("***Tornado Connection Closed***");
+   		    $("div#connection_details").show();
+   		  };
+   		  
+   		  //open socket callback
+   		  wsT.onopen = function(evt) {
+   		    log("***Tornado Connection Opened***");
+   		    $("div#connection_details").hide();
+   		  };
+   		  
+   		});
+   		
+   		//html button functions
+   		$("#submit_settings").click(function(evt) {
+   			var myNum = document.getElementById("tn").value;
+   			wsT.send(myNum);
+   		});
+   		
+   		$("#get_val").click(function(evt) {
+   			wsT.send("get");
+   		});
+   	});	  
+   	</script>
 </head>
 
 <body>
@@ -19,6 +73,28 @@
 	  <h1>Hello World!</h1>
 	  <p>This example contains div adjustments for testing purposes.</p>
 	</div>
+	<br>
+	<div id="connection_details">
+	  <label for="hostIP">HostIP:</label>
+	  <input id="hostIP" value="localhost"/>
+	  <br>
+	  <input type="submit" id="open" value="Open Connection" />
+	</div>
+	<br>
+	<div id="test_get">
+	  <input type="submit" id="get_val" value="Get Value" />
+	  <br>
+	  <div id="rxval"></div>
+	</div>
+	<br>
+	<div id="test_send">
+	  <input type="number" id="tn" name="tn" value="0" min="0" />
+	  <input type="button" value="Send Value" id="submit_settings" />
+	</div>
+	<br>
+	<div>Errors:</div>
+	<b>
+	<div id="terminal"></div>
 </body>
 
 </html>

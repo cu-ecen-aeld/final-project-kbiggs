@@ -1,0 +1,5 @@
+
+config BR2_PACKAGE_TORNADO_TEST
+	bool "tornado-test"
+	help
+	  Testing the tornado server.  Includes a python program to host a value for the index.html
